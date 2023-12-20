@@ -13,9 +13,8 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         List<Member> memberList = new ArrayList<>();
-        List<Cooking> cookerList = new ArrayList<>();
+        List<Cooking> cookingList = new ArrayList<>();
         int memberId = 1;
-
         int chefId = 1;
         Member userInfo = null;
         System.out.println("요리 게시판");
@@ -120,83 +119,82 @@ public class Main {
 
 
                 Cooking cooker = new Cooking(chefId, ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
-                cookerList.add(cooker);
+                cookingList.add(cooker);
 
                 chefId++;
             } else if (command.equals("목록")) {
                 System.out.println("재료 / 소요시간 / 난이도 / 음식종류 / 조리방법 / 칼로리 / 팁 / 주의사항");
                 System.out.println("--------------------");
 
-                for (Cooking cooking : cookerList) {
+                for (Cooking cooking : cookingList) {
                     System.out.printf("%s, %d, %s, %s, %s, %s, %s, %s\n", cooking.getIngredient(), cooking.getTime(), cooking.getDifficulty(),
                             cooking.getFoodtype(), cooking.getInstruction(), cooking.getCalories(), cooking.getTips(), cooking.getCaution());
                 }
 
-
             } else if (command.equals("삭제")) {
                 System.out.println("삭제할 Id를 입력해 주세요: ");
                 int deleteId = Integer.parseInt(sc.nextLine());
-                for (int i = 0; i < cookerList.size(); i++) {
-                    if (deleteId == cookerList.get(i).getId()) {
-                        cookerList.remove(i);
+                for (int i = 0; i < cookingList.size(); i++) {
+                    if (deleteId == cookingList.get(i).getId()) {
+                        cookingList.remove(i);
                         System.out.println(deleteId + "값이 지워집니다.");
                     }
                 }
             } else if (command.equals("수정")) {
                 System.out.println("수정할 값을 입력해주세요: ");
-                String modified = sc.nextLine();
-                for (int j = 0; j < cookerList.size(); j++){
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존재료: %s \n", cookerList.get(j).getIngredient());
+                int modifiedId = Integer.parseInt(sc.nextLine());
+                for (int j = 0; j < cookingList.size(); j++) {
+                    if (modifiedId == cookingList.get(j).getId()) {
+                        System.out.printf("기존재료: %s \n", cookingList.get(j).getIngredient());
                         String ingredient = sc.nextLine();
-                        cookerList.get(j).setIngredient(ingredient);
+                        cookingList.get(j).setIngredient(ingredient);
                         System.out.println("재료가 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존시간: %s \n", cookerList.get(j).getTime());
+
+
+                        System.out.printf("기존시간: %s \n", cookingList.get(j).getTime());
                         int time = Integer.parseInt(sc.nextLine());
-                        cookerList.get(j).setTime(time);
+                        cookingList.get(j).setTime(time);
                         System.out.println("시간이 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존난이도: %s \n", cookerList.get(j).getDifficulty());
+
+
+                        System.out.printf("기존난이도: %s \n", cookingList.get(j).getDifficulty());
                         String difficulty = sc.nextLine();
-                        cookerList.get(j).setDifficulty(difficulty);
+                        cookingList.get(j).setDifficulty(difficulty);
                         System.out.println("난이도가 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존음식종류: %s \n", cookerList.get(j).getFoodtype());
+
+
+                        System.out.printf("기존음식종류: %s \n", cookingList.get(j).getFoodtype());
                         String foodtype = sc.nextLine();
-                        cookerList.get(j).setFoodtype(foodtype);
+                        cookingList.get(j).setFoodtype(foodtype);
                         System.out.println("음식종류가 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존조리방법: %s \n", cookerList.get(j).getInstruction());
+
+
+                        System.out.printf("기존조리방법: %s \n", cookingList.get(j).getInstruction());
                         String instruction = sc.nextLine();
-                        cookerList.get(j).setInstruction(instruction);
+                        cookingList.get(j).setInstruction(instruction);
                         System.out.println("조리방법이 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존칼로리: %s \n", cookerList.get(j).getCalories());
+
+
+                        System.out.printf("기존칼로리: %s \n", cookingList.get(j).getCalories());
                         String calories = sc.nextLine();
-                        cookerList.get(j).setCalories(calories);
+                        cookingList.get(j).setCalories(calories);
                         System.out.println("칼로리가 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존팁: %s \n", cookerList.get(j).getTips());
+
+
+                        System.out.printf("기존팁: %s \n", cookingList.get(j).getTips());
                         String tips = sc.nextLine();
-                        cookerList.get(j).setTips(tips);
+                        cookingList.get(j).setTips(tips);
                         System.out.println("팁 수정되었습니다.");
-                    }
-                    if (modified.equals(String.valueOf(cookerList.get(j).getId())) ){
-                        System.out.printf("기존주의사항: %s \n", cookerList.get(j).getCaution());
+
+
+                        System.out.printf("기존주의사항: %s \n", cookingList.get(j).getCaution());
                         String caution = sc.nextLine();
-                        cookerList.get(j).setCaution(caution);
+                        cookingList.get(j).setCaution(caution);
                         System.out.println("주의사항이 수정되었습니다.");
                     }
 
                 }
-                System.out.println(modified + "값이 수정되었습니다.");
+                System.out.println(modifiedId + "값이 수정되었습니다.");
 
             }
 
