@@ -98,6 +98,7 @@ public class Main {
                     continue;
                 }
 
+                //등록 => 로그인 했을때만 가능하고, 로그인 회원 이름이 레시피에 작성자로 등록되도록
             } else if (command.equals("레시피 등록")) {
 
                 System.out.println("재료: ");
@@ -137,14 +138,14 @@ public class Main {
                 for (int i = 0; i < cookingList.size(); i++) {
                     if (deleteId == cookingList.get(i).getId()) {
                         cookingList.remove(i);
-                        System.out.println(deleteId + "값이 지워집니다.");
+                        System.out.println(deleteId + "번이 지워집니다.");
                     }
                 }
             } else if (command.equals("수정")) {
-                System.out.println("수정할 값을 입력해주세요: ");
-                int modifiedId = Integer.parseInt(sc.nextLine());
+                System.out.println("수정할 Id를 입력해주세요: ");
+                int modifyId = Integer.parseInt(sc.nextLine());
                 for (int j = 0; j < cookingList.size(); j++) {
-                    if (modifiedId == cookingList.get(j).getId()) {
+                    if (modifyId == cookingList.get(j).getId()) {
                         System.out.printf("기존재료: %s \n", cookingList.get(j).getIngredient());
                         String ingredient = sc.nextLine();
                         cookingList.get(j).setIngredient(ingredient);
@@ -194,7 +195,7 @@ public class Main {
                     }
 
                 }
-                System.out.println(modifiedId + "값이 수정되었습니다.");
+                System.out.println(modifyId + "번이 수정되었습니다.");
 
             }
 
