@@ -34,8 +34,8 @@ public class Main {
                     userId = sc.nextLine();
                     boolean isDuplecated = false;
 
-                    for (Member cookRecipe : memberList) {
-                        if (userId.equals(cookRecipe.getUserId())) {
+                    for (Member member : memberList) {
+                        if (userId.equals(member.getUserId())) {
                             System.out.println("중복아이디가 존재합니다.");
                             isDuplecated = true;
                         }
@@ -55,14 +55,14 @@ public class Main {
                     System.out.println("일치하는 비밀번호가 없습니다.");
                 }
 
-                Member cookRecipe = new Member(memberId, userId, password, now.toString());
-                memberList.add(cookRecipe);
+                Member member = new Member(memberId, userId, password, now.toString());
+                memberList.add(member);
                 System.out.println(userId + "님 회원가입을 환영합니다.");
                 memberId++;
             } else if (command.equals("로그인")) {
 
 
-                Member rogin = null;
+                Member login = null;
                 if (userInfo == null) {
                     System.out.println("로그인 상태가 안닙니다.");
                     continue;
@@ -72,22 +72,22 @@ public class Main {
                 System.out.printf("비밀번호를 입력해주세요: ");
                 String password = sc.nextLine();
 
-                for (Member cookRecipe : memberList) {
-                    if (username.equals(cookRecipe.getUserId())) {
-                        rogin = cookRecipe;
+                for (Member member : memberList) {
+                    if (username.equals(member.getUserId())) {
+                        login = member;
                         break;
                     }
                 }
-                if (rogin == null) {
+                if (login == null) {
                     System.out.println("로그인이 되지 않습니다.");
                     continue;
                 }
 
-                if (rogin.getPassword().equals(password) == false) {
+                if (login.getPassword().equals(password) == false) {
                     System.out.println("일치하는 비밀번호가 없습니다.");
                     continue;
                 }
-                userInfo = rogin;
+                userInfo = login;
                 System.out.println(username + "님 로그인이 완료되었습니다.");
 
 
@@ -119,8 +119,8 @@ public class Main {
                 String caution = sc.nextLine();
 
 
-                Cooking cooker = new Cooking(chefId, ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
-                cookingList.add(cooker);
+                Cooking cooking = new Cooking(chefId, ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
+                cookingList.add(cooking);
 
                 chefId++;
             } else if (command.equals("목록")) {

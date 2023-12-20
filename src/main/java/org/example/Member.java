@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class Member {
-    private int Id;
+    private int id;
     private String userId;
     private String password;
     private String passwordConfirm;
