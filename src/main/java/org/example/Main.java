@@ -56,7 +56,6 @@ public class Main {
                     System.out.println("일치하는 비밀번호가 없습니다.");
                 }
 
-
                 Member member = new Member(memberId, userId, password, now.toString());
                 memberList.add(member);
                 System.out.println(userId + "님 회원가입을 환영합니다.");
