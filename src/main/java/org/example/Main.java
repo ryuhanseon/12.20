@@ -14,8 +14,8 @@ public class Main {
         List<Member> memberList = new ArrayList<>();
         List<Cooking> cookingList = new ArrayList<>();
 
-        int Id = 1;
-        int cookid = 1;
+        int memberId = 1;
+        int cookingId = 1;
         Member userInfo = null;
         System.out.println("요리 게시판");
         while (true) {
@@ -57,10 +57,10 @@ public class Main {
                 }
 
 
-                Member member = new Member(Id, userId, password, now.toString());
+                Member member = new Member(memberId, userId, password, now.toString());
                 memberList.add(member);
                 System.out.println(userId + "님 회원가입을 환영합니다.");
-                Id++;
+                memberId++;
             } else if (command.equals("로그인")) {
 
                 if (userInfo != null) {
@@ -127,10 +127,10 @@ public class Main {
                 String caution = sc.nextLine();
 
 
-                Cooking cooking = new Cooking(cookid, userInfo.getUserId(), ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
+                Cooking cooking = new Cooking(cookingId, userInfo.getUserId(), ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
                 cookingList.add(cooking);
 
-                cookid++;
+                cookingId++;
             } else if (command.equals("목록")) {
                 System.out.println("재료 / 소요시간 / 난이도 / 음식종류 / 조리방법 / 칼로리 / 팁 / 주의사항");
                 System.out.println("--------------------");
