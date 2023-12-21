@@ -14,8 +14,8 @@ public class Main {
         List<Member> memberList = new ArrayList<>();
         List<Cooking> cookingList = new ArrayList<>();
 
-        int memberId = 1;
-        int chefId = 1;
+        int Id = 1;
+        int cookid = 1;
         Member userInfo = null;
         System.out.println("요리 게시판");
         while (true) {
@@ -57,10 +57,10 @@ public class Main {
                 }
 
 
-                Member member = new Member(memberId, userId, password, now.toString());
+                Member member = new Member(Id, userId, password, now.toString());
                 memberList.add(member);
                 System.out.println(userId + "님 회원가입을 환영합니다.");
-                memberId++;
+                Id++;
             } else if (command.equals("로그인")) {
 
                 if (userInfo != null) {
@@ -82,13 +82,13 @@ public class Main {
                 }
 
                 if (login == null) {
-                    System.out.println("로그인이 되지 않습니다.");
+                    System.out.println("해당 회원이 존재하지 않습니다.");
                     continue;
                 }
 
 
                 if (login.getPassword().equals(password) == false) {
-                    System.out.println("일치하는 비밀번호가 없습니다.");
+                    System.out.println("비밀번호가 일치하지 않습니다.");
                     continue;
                 }
 
@@ -101,7 +101,9 @@ public class Main {
                     System.out.println("로그아웃 상태입니다.");
                     continue;
                 }
-                //등록 => 로그인 했을때만 가능하고, 로그인 회원 이름이 레시피에 작성자로 등록되도록
+                userInfo=null;
+                System.out.println("로그아웃 되었습니다.");
+
             } else if (command.equals("레시피 등록")) {
                 if (userInfo == null) {
                     System.out.println("회원만 등록할 수 있습니다.");
@@ -125,10 +127,10 @@ public class Main {
                 String caution = sc.nextLine();
 
 
-                Cooking cooking = new Cooking(chefId, userInfo.getUserId(), ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
+                Cooking cooking = new Cooking(cookid, userInfo.getUserId(), ingredient, time, difficulty, foodtype, instruction, calories, tips, caution);
                 cookingList.add(cooking);
 
-                chefId++;
+                cookid++;
             } else if (command.equals("목록")) {
                 System.out.println("재료 / 소요시간 / 난이도 / 음식종류 / 조리방법 / 칼로리 / 팁 / 주의사항");
                 System.out.println("--------------------");
